@@ -18,16 +18,16 @@ provider "aws" {
 
 
 
-resource "aws_iam_policy_attachment" "admin" {
-  name = "admin"
-  roles = [aws_iam_role.role-a.name]
-  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-}
-
-//resource "aws_iam_role_policy_attachment" "admin" {
+//resource "aws_iam_policy_attachment" "admin" {
+//  name = "admin"
+//  roles = [aws_iam_role.role-a.name]
 //  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
-//  role = aws_iam_role.role-a.name
 //}
+
+resource "aws_iam_role_policy_attachment" "admin" {
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+  role = aws_iam_role.role-a.name
+}
 
 resource "aws_iam_role" "role-a" {
   name = "role-a"
